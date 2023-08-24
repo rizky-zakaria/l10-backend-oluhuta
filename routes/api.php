@@ -16,3 +16,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/logout', App\Http\Controllers\Api\Admin\LogoutController::class, ['as' => 'admin']);
     });
 });
+
+Route::prefix('web')->group(function () {
+    Route::get('/berita', [App\Http\Controllers\Api\Web\BeritaController::class, 'index', ['as' => 'web']]);
+});
