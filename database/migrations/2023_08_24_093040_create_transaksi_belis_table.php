@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('transaksi_belis', function (Blueprint $table) {
             $table->id();
+            $table->string('order_id');
+            $table->string('status');
+            $table->double('harga');
+            $table->bigInteger('product_id');
+            $table->bigInteger('user_id');
+            $table->string('checkout_link');
             $table->timestamps();
         });
     }

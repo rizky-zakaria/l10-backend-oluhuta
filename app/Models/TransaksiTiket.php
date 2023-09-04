@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gambar extends Model
+class TransaksiTiket extends Model
 {
     use HasFactory;
-    protected $fillable = ['gambar', 'path', 'jenis'];
 }
