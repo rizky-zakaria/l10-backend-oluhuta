@@ -15,7 +15,7 @@ class KategoriSeeder extends Seeder
      */
     public function run()
     {
-        $kategori = ['Geodiveristy', 'Cultural Diversity', 'Biodiversity'];
+        $kategori = ['Geodiveristy', 'Culturdiversity', 'Biodiversity'];
 
         for ($i = 0; $i < count($kategori); $i++) {
             Kategori::create([

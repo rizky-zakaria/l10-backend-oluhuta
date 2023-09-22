@@ -9,7 +9,7 @@ class Konten extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['judul', 'sub_judul', 'slug', 'gambar_id', 'isi', 'tgl_post'];
+    protected $fillable = ['judul', 'sub_judul', 'slug', 'gambar_id', 'isi', 'tgl_post', 'kategori_id'];
 
     public $timestamps = false;
 }

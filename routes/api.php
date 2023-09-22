@@ -19,14 +19,16 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('client')->group(function () {
-    Route::post('/login', App\Http\Controllers\Api\Admin\LoginController::class, ['as' => 'admin']);
+    Route::post('/login', App\Http\Controllers\Api\Admin\LoginController::class, ['as' => 'user']);
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/user', function (Request $request) {
             return $request->user();
         })->name('user');
-        Route::post();
-        Route::post('/logout', App\Http\Controllers\Api\Admin\LogoutController::class, ['as' => 'admin']);
+        Route::apiResource('/geodiveristy', App\Http\Controllers\Api\Client\GeodiveristyController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
+        Route::apiResource('/biodiversity', App\Http\Controllers\Api\Client\BiodiversityController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
+        Route::apiResource('/culturdiversity', App\Http\Controllers\Api\Client\CulturdiversityController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
+        Route::post('/logout', App\Http\Controllers\Api\Admin\LogoutController::class, ['as' => 'user']);
     });
 });
 

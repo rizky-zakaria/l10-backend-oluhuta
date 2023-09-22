@@ -21,6 +21,7 @@ return new class extends Migration
             $table->bigInteger('gambar_id');
             $table->longText('isi');
             $table->string('tgl_post');
+            $table->bigInteger('kategori_id');
         });
     }
 

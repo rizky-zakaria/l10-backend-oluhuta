@@ -18,5 +18,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(KategoriSeeder::class);
+        $this->call(GeodiveristySeeder::class);
+        $this->call(CulturdiversitySeeder::class);
+        $this->call(BiodiversitySeeder::class);
+        $this->call(ClientSeeder::class);
+        $this->call(GambarSeeder::class);
     }
 }
