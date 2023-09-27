@@ -28,6 +28,8 @@ Route::prefix('client')->group(function () {
         Route::apiResource('/geodiveristy', App\Http\Controllers\Api\Client\GeodiveristyController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
         Route::apiResource('/biodiversity', App\Http\Controllers\Api\Client\BiodiversityController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
         Route::apiResource('/culturdiversity', App\Http\Controllers\Api\Client\CulturdiversityController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
+        Route::apiResource('/berita', App\Http\Controllers\Api\Client\BeritaController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
+        Route::post('ekonomi-kreatif/payment', [App\Http\Controllers\Api\Client\TransaksiEkonomiKreatifController::class, 'create']);
         Route::post('/logout', App\Http\Controllers\Api\Admin\LogoutController::class, ['as' => 'user']);
     });
 });

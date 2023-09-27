@@ -13,9 +13,7 @@ class GeodiveristyController extends Controller
     {
         $data = Konten::join('gambars', 'gambars.id', '=', 'kontens.gambar_id')
             ->where('kontens.kategori_id', 1)
-            ->when(request()->q, function ($data) {
-                $data = $data->where('kontens.judul', 'like', '%' . request()->q . '%');
-            })->latest()->paginate(6);
+            ->get();
         return new KontenResource(true, 'List data konten', $data);
     }
 

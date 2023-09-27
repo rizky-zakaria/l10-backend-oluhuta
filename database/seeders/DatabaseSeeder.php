@@ -23,5 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call(BiodiversitySeeder::class);
         $this->call(ClientSeeder::class);
         $this->call(GambarSeeder::class);
+        $this->call(BeritaSeeder::class);
+        $this->call(ProductKreatifSeeder::class);
+        $this->call(MerchantKulinerSeeder::class);
+        $this->call(MerchantBarangSewaSeeder::class);
+        $this->call(MerchantEkonomiKreatifSeeder::class);
     }
 }
