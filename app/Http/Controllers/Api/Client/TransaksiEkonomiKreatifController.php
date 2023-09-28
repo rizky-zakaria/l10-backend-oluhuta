@@ -3,23 +3,45 @@
 namespace App\Http\Controllers\Api\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TransaksiResource;
 use App\Models\ProductKreatif;
 use App\Models\TransaksiEkonomiKreatif;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class TransaksiEkonomiKreatifController extends Controller
 {
+    public function index($status)
+    {
+        $data = TransaksiEkonomiKreatif::join('product_kreatifs', 'product_kreatifs.id', '=', 'transaksi_ekonomi_kreatifs.product_kreatif_id')
+            ->join('gambars', 'gambars.id', '=', 'product_kreatifs.gambar_id')
+            ->where('status', $status)
+            ->orderBy('created_at', 'desc')
+            ->get(['transaksi_ekonomi_kreatifs.*', 'product_kreatifs.produk', 'gambars.path']);
+        return new TransaksiResource(true, 'List data konten', $data);
+    }
+
     public function create(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'qty'    => 'required|max:1',
+            'id'     => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
         $product = ProductKreatif::whereId($request->id)->first();
 
         if ($product->stok < $request->qty) {
             return response()->json([
                 'status' => false,
-                'message' => 'Stok tidak cukup'
+                'message' => 'Gagal mendapatkan data'
             ]);
         }
 
@@ -60,7 +82,11 @@ class TransaksiEkonomiKreatifController extends Controller
         $payment->checkout_link = $response->redirect_url;
         $payment->save();
 
-        return response()->json($response);
+        return response()->json([
+            'status' => true,
+            'message' => 'Berhasil mengisi database',
+            'data' => $payment
+        ]);
     }
 
     public function webhook(Request $request)
@@ -94,7 +120,7 @@ class TransaksiEkonomiKreatifController extends Controller
             $payment->status = 'cancel';
         }
 
-        $payment->save();
+        $payment->update();
         return response()->json('success');
     }
 }
