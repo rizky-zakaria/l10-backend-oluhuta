@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\KontenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
+});
+
+Auth::routes();
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::prefix('admin')->group(function () {
+        Route::resource('konten', KontenController::class);
+    });
 });

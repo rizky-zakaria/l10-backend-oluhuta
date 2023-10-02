@@ -29,14 +29,13 @@ Route::prefix('client')->group(function () {
         Route::apiResource('/biodiversity', App\Http\Controllers\Api\Client\BiodiversityController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
         Route::apiResource('/culturdiversity', App\Http\Controllers\Api\Client\CulturdiversityController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
         Route::apiResource('/berita', App\Http\Controllers\Api\Client\BeritaController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
-        Route::apiResource('/merchant-ekonomi-kreatif', App\Http\Controllers\Api\Client\MerchantEkonomiKreatifController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
-        Route::apiResource('/merchant-barang-sewa', App\Http\Controllers\Api\Client\MerchantBarangSewaController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
-        Route::apiResource('/merchant-kuliner', App\Http\Controllers\Api\Client\MerchantKulinerController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
-        Route::post('ekonomi-kreatif/payment', [App\Http\Controllers\Api\Client\TransaksiEkonomiKreatifController::class, 'create']);
-        Route::get('ekonomi-kreatif/payment/{status}', [App\Http\Controllers\Api\Client\TransaksiEkonomiKreatifController::class, 'index']);
+        Route::apiResource('/merchant', App\Http\Controllers\Api\Client\MerchatController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
+        Route::get('product/{id}', [App\Http\Controllers\Api\Client\MerchatController::class, 'product']);
+        Route::post('transaksis/payment', [App\Http\Controllers\Api\Client\TransaksiController::class, 'create']);
+        Route::get('transaksis/payment/{status}', [App\Http\Controllers\Api\Client\TransaksiController::class, 'index']);
         Route::post('/logout', App\Http\Controllers\Api\Admin\LogoutController::class, ['as' => 'user']);
     });
-    Route::post('ekonomi-kreatif/webhook', [App\Http\Controllers\Api\Client\TransaksiEkonomiKreatifController::class, 'webhook']);
+    Route::post('transaksis/webhook', [App\Http\Controllers\Api\Client\TransaksiController::class, 'webhook']);
 });
 
 Route::prefix('web')->group(function () {

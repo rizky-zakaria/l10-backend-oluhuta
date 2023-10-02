@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\MerchantKuliner;
+use App\Models\Merchant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +15,7 @@ class MerchantKulinerSeeder extends Seeder
      */
     public function run()
     {
-        MerchantKuliner::create([
+        Merchant::create([
             'nama' => 'Rumah Makan Mama Ani',
             'deskripsi' => 'Menjual Semua Kebutuhan Anda',
             'gambar_id' => 1
