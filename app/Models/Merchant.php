@@ -9,4 +9,14 @@ class Merchant extends Model
 {
     use HasFactory;
     protected $fillable = ['nama', 'deskripsi', 'gambar_id'];
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function gambar()
+    {
+        return $this->belongsTo(Gambar::class);
+    }
 }

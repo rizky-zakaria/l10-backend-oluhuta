@@ -12,4 +12,14 @@ class Konten extends Model
     protected $fillable = ['judul', 'sub_judul', 'slug', 'gambar_id', 'isi', 'tgl_post', 'kategori_id'];
 
     public $timestamps = false;
+
+    public function gambar()
+    {
+        return $this->belongsTo(Gambar::class);
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

@@ -308,27 +308,48 @@ return [
             'submenu' => [
                 [
                     'text' => 'Merchant',
-                    'url'  => 'merchant',
+                    'url'  => 'admin/merchant',
                 ],
                 [
                     'text' => 'Kuliner',
-                    'url'  => 'kuliner',
+                    'url'  => 'admin/kuliner',
                 ],
                 [
                     'text' => 'Penyewaan & UMKM Lokal',
-                    'url'  => 'umkm-lokal',
+                    'url'  => 'admin/umkm-lokal',
                 ],
             ],
         ],
         [
+            'text'        => 'Konten',
+            'url'         => 'admin/konten',
+            'icon'        => 'fas  fa-archive',
+            'can'         => ['isAdmin']
+        ],
+        [
             'text'        => 'Transaksi',
-            'url'         => 'transaksi',
+            'url'         => 'admin/transaksi',
             'icon'        => 'fas fa-shopping-cart',
             'can'         => ['isAdmin']
         ],
         [
+            'text'        => 'Laporan',
+            'icon'        => 'fas fa-file',
+            'can'         => ['isAdmin'],
+            'submenu' => [
+                [
+                    'text' => 'Transaksi',
+                    'url'  => 'admin/laporan/transaksi',
+                ],
+                [
+                    'text' => 'Kunjungan',
+                    'url'  => 'admin/laporan/kunjungan',
+                ]
+            ],
+        ],
+        [
             'text'        => 'Reset Password',
-            'url'         => 'password',
+            'url'         => 'admin/password',
             'icon'        => 'fas fa-key',
             'can'         => ['isAdmin']
         ],
