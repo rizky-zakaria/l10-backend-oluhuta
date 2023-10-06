@@ -348,11 +348,17 @@ return [
             ],
         ],
         [
-            'text'        => 'Reset Password',
-            'url'         => 'admin/password',
-            'icon'        => 'fas fa-key',
+            'text'        => 'Qr Code',
+            'url'         => 'admin/qrcode',
+            'icon'        => 'fas fa-qrcode',
             'can'         => ['isAdmin']
         ],
+        // [
+        //     'text'        => 'Reset Password',
+        //     'url'         => 'admin/password',
+        //     'icon'        => 'fas fa-key',
+        //     'can'         => ['isAdmin']
+        // ],
     ],
 
     /*

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\LaporanTransaksiController;
 use App\Http\Controllers\Admin\MerchantController;
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\UmkmController;
+use App\Http\Controllers\KunjunganController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,8 +36,11 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('umkm-lokal', UmkmController::class);
         Route::get('transaksi', [TransaksiController::class, 'index']);
         Route::get('laporan/transaksi', [LaporanTransaksiController::class, 'index']);
-        Route::get('laporan/transaksi/{id}', [LaporanTransaksiController::class, 'show']);
+        Route::post('laporan/transaksi/cetak', [LaporanTransaksiController::class, 'cetak']);
         Route::get('laporan/kunjungan', [LaporanKunjunganController::class, 'index']);
-        Route::get('laporan/kunjungan/{id}', [LaporanKunjunganController::class, 'show']);
+        Route::post('laporan/kunjungan/cetak', [LaporanKunjunganController::class, 'cetak']);
+        Route::get('qrcode', [KunjunganController::class, 'qrcode']);
     });
 });
+
+Route::get('kunjungan/{id}', [KunjunganController::class, 'show']);

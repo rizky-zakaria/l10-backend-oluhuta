@@ -1,55 +1,49 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Laporan Transaksi')
 
 @section('content_header')
-    <h1>Merchant</h1>
+    <h1>Laporan Transaksi</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            Daftar Merchant
-            <a href="{{ route('konten.create') }}" class="btn btn-sm btn-primary float-right"><i
-                    class="fas fa-plus-circle"></i>Tambah</a>
+            Laporan Transaksi
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-hover" id="myTable">
-                <thead>
-                    <tr>
-                        <th>
-                            No
-                        </th>
-                        <th>
-                            Judul
-                        </th>
-                        <th>
-                            Kategori
-                        </th>
-                        <th>
-                            Gambar
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($data as $item)
-                        <tr>
-                            <td>
-                                {{ $loop->iteration }}
-                            </td>
-                            <td>
-                                {{ $item->judul }}
-                            </td>
-                            <td>
-                                {{ $item->kategori->kategori }}
-                            </td>
-                            <td>
-                                <img src="{{ asset($item->gambar->path) }}" width="100px" alt="">
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <form action="{{ url('admin/laporan/transaksi/cetak') }}" method="post">
+                @csrf
+                @php
+                    $tahun = date('Y');
+                    $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                    $bln = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+                @endphp
+                <div class="form-row">
+                    <div class="col-4">
+                        <select name="tahun" id="tahun" class='form-control'>
+                            @php
+                                for ($i = 0; $i < 5; $i++) {
+                                    echo "<option value='" . $tahun - $i . "'>" . $tahun - $i . '</option>';
+                                }
+                            @endphp
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <select name="bulan" id="bulan" class='form-control'>
+                            @php
+                                for ($i = 0; $i < 12; $i++) {
+                                    echo "<option value='" . $bln[$i] . "'>" . $bulan[$i] . '</option>';
+                                }
+                            @endphp
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-md btn-warning w-100"><i class="fas fa-print"></i>
+                            Cetak</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 @stop

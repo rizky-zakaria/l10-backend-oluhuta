@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class LaporanTransaksiController extends Controller
@@ -12,8 +13,9 @@ class LaporanTransaksiController extends Controller
         return view('laporan-transaksi.index');
     }
 
-    public function show()
+    public function cetak(Request $request)
     {
-        return view('laporan-transaksi.show');
+        $data = Transaksi::where('created_at', 'like', '%' . $request->tahun . '-' . $request->bulan . '%')->get();
+        return view('laporan-transaksi.cetak', compact('data'));
     }
 }
