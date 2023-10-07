@@ -15,7 +15,8 @@ class LaporanTransaksiController extends Controller
 
     public function cetak(Request $request)
     {
-        $data = Transaksi::where('created_at', 'like', '%' . $request->tahun . '-' . $request->bulan . '%')->get();
+        $filter = $request->tahun . '-' . $request->bulan;
+        $data = Transaksi::where('created_at', 'like', '%' . $filter . '%')->get();
         return view('laporan-transaksi.cetak', compact('data'));
     }
 }

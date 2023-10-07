@@ -30,6 +30,7 @@ Route::prefix('client')->group(function () {
         Route::apiResource('/culturdiversity', App\Http\Controllers\Api\Client\CulturdiversityController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
         Route::apiResource('/berita', App\Http\Controllers\Api\Client\BeritaController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
         Route::apiResource('/merchant', App\Http\Controllers\Api\Client\MerchatController::class, ['except' => ['create', 'edit', 'update', 'destroy'], 'as' => 'user']);
+        Route::get('product', [App\Http\Controllers\Api\Client\ProductController::class, 'index']);
         Route::get('product/{id}', [App\Http\Controllers\Api\Client\MerchatController::class, 'product']);
         Route::post('transaksis/payment', [App\Http\Controllers\Api\Client\TransaksiController::class, 'create']);
         Route::get('transaksis/payment/{status}', [App\Http\Controllers\Api\Client\TransaksiController::class, 'index']);
