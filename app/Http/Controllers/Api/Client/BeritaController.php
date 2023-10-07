@@ -13,7 +13,7 @@ class BeritaController extends Controller
     public function index()
     {
         $data = Konten::join('gambars', 'gambars.id', '=', 'kontens.gambar_id')
-            ->where('kontens.kategori_id', 2)
+            ->where('kontens.kategori_id', 4)
             ->get();
         return new BeritaResource(true, 'List data konten', $data);
     }
