@@ -7,6 +7,7 @@ use App\Models\Gambar;
 use App\Models\Merchant;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class MerchantController extends Controller
@@ -51,8 +52,15 @@ class MerchantController extends Controller
         }
 
         $image = $request->file('file');
+        $extension = $image->getClientOriginalExtension();
+        $rename = 'IMG' . date('YmdHis') . '.' . $extension;
+        $uploadPath = public_path('uploads');
+        if (!File::isDirectory($uploadPath)) {
+            File::makeDirectory($uploadPath, 0755, true, true);
+        }
 
-        if ($image->storeAs('public/uploads', $image->hashName())) {
+
+        if ($image->move($uploadPath, $rename)) {
             $gambar = Gambar::create([
                 'gambar' => $image->hashName(),
                 'path' => 'uploads/' . $image->hashName(),
@@ -65,7 +73,7 @@ class MerchantController extends Controller
             ]);
             if ($data) {
                 // Al('Gagal menambahkan data', 'error');
-                return redirect()->route('konten.index');
+                return redirect()->route('merchant.index');
             } else {
                 // toast('Gagal menambahkan data', 'error');
                 return redirect()->back();
