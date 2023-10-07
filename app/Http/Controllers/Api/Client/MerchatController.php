@@ -20,7 +20,7 @@ class MerchatController extends Controller
     public function show($id)
     {
         $konten = Product::join('gambars', 'gambars.id', '=', 'products.gambar_id')
-            ->where('products.merchant_id', $id)->get();
+            ->where('products.merchant_id', $id)->get(['products.*', 'gambars.path']);
         if ($konten) {
             return new MerchantResource(true, 'Detail Data Category!', $konten);
         }
@@ -31,7 +31,7 @@ class MerchatController extends Controller
     public function product($id)
     {
         $konten = Product::join('gambars', 'gambars.id', '=', 'products.gambar_id')
-            ->where('products.id', $id)->first();
+            ->where('products.id', $id)->first(['products.*', 'gambars.path']);
         if ($konten) {
             return new MerchantResource(true, 'Detail Data Category!', $konten);
         }
