@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Models\Gambar;
 use App\Models\Kategori;
 use App\Models\Konten;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class KontenController extends Controller
@@ -57,11 +58,18 @@ class KontenController extends Controller
         }
 
         $image = $request->file('file');
+        $extension = $image->getClientOriginalExtension();
+        $rename = 'IMG' . date('YmdHis') . '.' . $extension;
+        $uploadPath = public_path('uploads');
+        if (!File::isDirectory($uploadPath)) {
+            File::makeDirectory($uploadPath, 0755, true, true);
+        }
 
-        if ($image->storeAs('public/uploads', $image->hashName())) {
+
+        if ($image->move($uploadPath, $rename)) {
             $gambar = Gambar::create([
-                'gambar' => $image->hashName(),
-                'path' => 'uploads/' . $image->hashName(),
+                'gambar' => $rename,
+                'path' => 'uploads/' . $rename,
                 'jenis' => 'konten'
             ]);
             $konten = Konten::create([
