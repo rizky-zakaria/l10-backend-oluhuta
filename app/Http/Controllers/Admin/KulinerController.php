@@ -8,6 +8,7 @@ use App\Models\Merchant;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class KulinerController extends Controller
@@ -57,11 +58,18 @@ class KulinerController extends Controller
         }
 
         $image = $request->file('file');
+        $extension = $image->getClientOriginalExtension();
+        $rename = 'IMG' . date('YmdHis') . '.' . $extension;
+        $uploadPath = public_path('uploads');
+        if (!File::isDirectory($uploadPath)) {
+            File::makeDirectory($uploadPath, 0755, true, true);
+        }
 
-        if ($image->storeAs('public/uploads', $image->hashName())) {
+
+        if ($image->move($uploadPath, $rename)) {
             $gambar = Gambar::create([
-                'gambar' => $image->hashName(),
-                'path' => 'uploads/' . $image->hashName(),
+                'gambar' => $rename,
+                'path' => 'uploads/' . $rename,
                 'jenis' => 'kuliner'
             ]);
             $konten = Product::create([
@@ -133,11 +141,18 @@ class KulinerController extends Controller
 
         if ($request->has('file')) {
             $image = $request->file('file');
+            $extension = $image->getClientOriginalExtension();
+            $rename = 'IMG' . date('YmdHis') . '.' . $extension;
+            $uploadPath = public_path('uploads');
+            if (!File::isDirectory($uploadPath)) {
+                File::makeDirectory($uploadPath, 0755, true, true);
+            }
 
-            if ($image->storeAs('public/uploads', $image->hashName())) {
+
+            if ($image->move($uploadPath, $rename)) {
                 $gambar = Gambar::create([
-                    'gambar' => $image->hashName(),
-                    'path' => 'uploads/' . $image->hashName(),
+                    'gambar' => $rename,
+                    'path' => 'uploads/' . $rename,
                     'jenis' => 'kuliner'
                 ]);
                 $produk = Product::find($id);

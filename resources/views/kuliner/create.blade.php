@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="card">
-        <form action="{{ route('merchant.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('kuliner.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="form-row">
