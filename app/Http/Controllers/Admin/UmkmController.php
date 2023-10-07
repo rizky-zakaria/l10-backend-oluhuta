@@ -114,7 +114,7 @@ class UmkmController extends Controller
     {
         $data = Product::find($id);
         $merchant = Merchant::all();
-        return view('umkm-lokal.edit', compact('data', 'merchant'));
+        return view('umkm.edit', compact('data', 'merchant'));
     }
 
     /**
