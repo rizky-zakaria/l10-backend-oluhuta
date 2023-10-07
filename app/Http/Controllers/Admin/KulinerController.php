@@ -148,7 +148,6 @@ class KulinerController extends Controller
                 File::makeDirectory($uploadPath, 0755, true, true);
             }
 
-
             if ($image->move($uploadPath, $rename)) {
                 $gambar = Gambar::create([
                     'gambar' => $rename,

@@ -125,11 +125,18 @@ class MerchantController extends Controller
 
         if ($request->has('file')) {
             $image = $request->file('file');
+            $extension = $image->getClientOriginalExtension();
+            $rename = 'IMG' . date('YmdHis') . '.' . $extension;
+            $uploadPath = public_path('uploads');
+            if (!File::isDirectory($uploadPath)) {
+                File::makeDirectory($uploadPath, 0755, true, true);
+            }
 
-            if ($image->storeAs('public/uploads', $image->hashName())) {
+
+            if ($image->move($uploadPath, $rename)) {
                 $gambar = Gambar::create([
-                    'gambar' => $image->hashName(),
-                    'path' => 'uploads/' . $image->hashName(),
+                    'gambar' => $rename,
+                    'path' => 'uploads/' . $rename,
                     'jenis' => 'merchant'
                 ]);
 
