@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'UMKM Lokal')
 
 @section('content_header')
-    <h1>Transaksi</h1>
+    <h1>UMKM Lokal</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            Daftar Transaksi
+            Daftar UMKM Lokal
             <a href="{{ route('umkm-lokal.create') }}" class="btn btn-sm btn-primary float-right"><i
                     class="fas fa-plus-circle"></i> Tambah</a>
         </div>
