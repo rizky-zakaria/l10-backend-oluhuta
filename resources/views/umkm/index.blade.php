@@ -64,7 +64,13 @@
                             <td>
                                 <a href="{{ route('umkm-lokal.edit', $item->id) }}" class="btn btn-sm btn-success"><i
                                         class="fas fa-edit"></i></a>
-                                <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                <form action="{{ route('umkm-lokal.destroy', $item->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit"class="btn btn-sm btn-danger"><i
+                                            class="fas fa-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
