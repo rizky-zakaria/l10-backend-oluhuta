@@ -62,8 +62,8 @@ class MerchantController extends Controller
 
         if ($image->move($uploadPath, $rename)) {
             $gambar = Gambar::create([
-                'gambar' => $image->hashName(),
-                'path' => 'uploads/' . $image->hashName(),
+                'gambar' => $rename,
+                'path' => 'uploads/' . $rename,
                 'jenis' => 'merchant'
             ]);
             $data = Merchant::create([
