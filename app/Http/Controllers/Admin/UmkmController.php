@@ -84,7 +84,7 @@ class UmkmController extends Controller
             ]);
             if ($konten) {
                 // Al('Gagal menambahkan data', 'error');
-                return redirect()->route('kuliner.index');
+                return redirect()->route('umkm-lokal.index');
             } else {
                 // toast('Gagal menambahkan data', 'error');
                 return redirect()->back();
@@ -166,7 +166,7 @@ class UmkmController extends Controller
                 $produk->update();
                 if ($produk) {
                     // Al('Gagal menambahkan data', 'error');
-                    return redirect()->route('kuliner.index');
+                    return redirect()->route('umkm-lokal.index');
                 } else {
                     // toast('Gagal menambahkan data', 'error');
                     return redirect()->back();
@@ -183,7 +183,7 @@ class UmkmController extends Controller
             $produk->update();
             if ($produk) {
                 // Al('Gagal menambahkan data', 'error');
-                return redirect()->route('kuliner.index');
+                return redirect()->route('umkm-lokal.index');
             } else {
                 // toast('Gagal menambahkan data', 'error');
                 return redirect()->back();
@@ -202,6 +202,6 @@ class UmkmController extends Controller
     {
         $data = Product::find($id);
         $data->delete();
-        return redirect()->route('kuliner.index');
+        return redirect()->route('umkm-lokal.index');
     }
 }
