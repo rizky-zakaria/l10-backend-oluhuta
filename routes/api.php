@@ -41,4 +41,5 @@ Route::prefix('client')->group(function () {
 
 Route::prefix('web')->group(function () {
     Route::get('/berita', [App\Http\Controllers\Api\Web\BeritaController::class, 'index', ['as' => 'web']]);
+    Route::get('/sliders', [App\Http\Controllers\Api\Client\SliderController::class, 'index', ['as' => 'web']]);
 });
