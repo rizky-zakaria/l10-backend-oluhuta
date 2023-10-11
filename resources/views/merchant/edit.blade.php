@@ -23,6 +23,11 @@
                             value="{{ $data->deskripsi }}">
                     </div>
                     <div class="col-12">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="text" name="phone" id="phone" class="form-control"
+                            value="{{ $data->phone }}">
+                    </div>
+                    <div class="col-12">
                         <label for="gambar">Gambar</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="gambar"

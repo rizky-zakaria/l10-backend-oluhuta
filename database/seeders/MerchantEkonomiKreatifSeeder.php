@@ -18,7 +18,8 @@ class MerchantEkonomiKreatifSeeder extends Seeder
         Merchant::create([
             'nama' => 'Toko Kaldu',
             'deskripsi' => 'Menjual Semua Kebutuhan Anda',
-            'gambar_id' => 1
+            'gambar_id' => 1,
+            'phone' => '081803975109'
         ]);
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->text('deskripsi');
+            $table->string('phone');
             $table->bigInteger('gambar_id');
             $table->timestamps();
         });

@@ -18,7 +18,8 @@ class MerchantBarangSewaSeeder extends Seeder
         Merchant::create([
             'nama' => 'Toko Ali',
             'deskripsi' => 'Menjual Semua Kebutuhan Anda',
-            'gambar_id' => 1
+            'gambar_id' => 1,
+            'phone' => '6281803975109'
         ]);
     }
 }

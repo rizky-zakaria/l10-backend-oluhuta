@@ -12,7 +12,8 @@ class ProductController extends Controller
     public function index()
     {
         $data = Product::join('gambars', 'gambars.id', '=', 'products.gambar_id')
-            ->get(['products.*', 'gambars.path']);
+            ->join('merchants', 'merchants.id', '=', 'products.merchant_id')
+            ->get(['products.*', 'gambars.path', 'merchants.phone']);
 
         return new MerchantResource(true, 'List data konten', $data);
     }

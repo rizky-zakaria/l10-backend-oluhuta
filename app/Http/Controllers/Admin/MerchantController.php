@@ -44,7 +44,8 @@ class MerchantController extends Controller
         $validator = Validator::make($request->all(), [
             'file'    => 'required|image|mimes:jpeg,jpg,png|max:2000',
             'nama'     => 'required|unique:merchants',
-            'deskripsi' => 'required'
+            'deskripsi' => 'required',
+            'phone' => 'required|max:13|min:10'
         ]);
 
         if ($validator->fails()) {
@@ -69,7 +70,8 @@ class MerchantController extends Controller
             $data = Merchant::create([
                 'nama' => $request->nama,
                 'deskripsi' => $request->deskripsi,
-                'gambar_id' => $gambar->id
+                'gambar_id' => $gambar->id,
+                'phone' => $request->phone
             ]);
             if ($data) {
                 // Al('Gagal menambahkan data', 'error');
@@ -144,6 +146,7 @@ class MerchantController extends Controller
                 $data->nama = $request->nama;
                 $data->deskripsi = $request->deskripsi;
                 $data->gambar_id = $gambar->id;
+                $data->phone = $request->phone;
                 $data->update();
 
                 if ($data) {
