@@ -20,7 +20,7 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('client')->group(function () {
     Route::post('/login', App\Http\Controllers\Api\Admin\LoginController::class, ['as' => 'user']);
-
+    Route::post('/register', App\Http\Controllers\Api\Admin\RegisterController::class, ['as' => 'user']);
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/user', function (Request $request) {
             return $request->user();

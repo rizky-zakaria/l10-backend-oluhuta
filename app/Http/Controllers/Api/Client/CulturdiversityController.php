@@ -13,7 +13,7 @@ class CulturdiversityController extends Controller
     {
         $data = Konten::join('gambars', 'gambars.id', '=', 'kontens.gambar_id')
             ->where('kontens.kategori_id', 2)
-            ->get();
+            ->get(['kontens.*', 'gambars.path']);
         return new KontenResource(true, 'List data konten', $data);
     }
 
