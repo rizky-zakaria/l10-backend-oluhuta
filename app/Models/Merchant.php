@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Merchant extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama', 'deskripsi', 'gambar_id'];
+    protected $fillable = ['nama', 'deskripsi', 'gambar_id', 'phone'];
 
     public function product()
     {

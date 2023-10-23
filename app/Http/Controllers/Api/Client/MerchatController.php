@@ -20,6 +20,8 @@ class MerchatController extends Controller
     public function show($id)
     {
         $konten = Product::join('gambars', 'gambars.id', '=', 'products.gambar_id')
+            ->where('products.kategori', 'umkm')
+            ->orWhere('products.kategori', 'sewa')
             ->where('products.merchant_id', $id)->get(['products.*', 'gambars.path']);
         if ($konten) {
             return new MerchantResource(true, 'Detail Data Category!', $konten);

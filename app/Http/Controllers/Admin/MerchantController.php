@@ -185,9 +185,10 @@ class MerchantController extends Controller
     public function destroy($id)
     {
         $produk = Product::where('merchant_id', $id)->get();
+
         if (count($produk) > 0) {
             for ($i = 0; $i < count($produk); $i++) {
-                $d = Product::find($produk[$id]);
+                $d = Product::where('id', $produk[$i]->id)->first();
                 $d->delete();
             }
         }
