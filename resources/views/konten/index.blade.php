@@ -50,7 +50,8 @@
                                 <img src="{{ asset($item->gambar->path) }}" width="100px" alt="">
                             </td>
                             <td>
-                                <a href="" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('konten.edit', $item->id) }}" class="btn btn-sm btn-success"><i
+                                        class="fas fa-edit"></i></a>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                     data-target="#exampleModal">
                                     <i class="fas fa-trash"></i>
