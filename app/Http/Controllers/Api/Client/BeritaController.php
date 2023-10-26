@@ -14,7 +14,7 @@ class BeritaController extends Controller
     {
         $data = Konten::join('gambars', 'gambars.id', '=', 'kontens.gambar_id')
             ->where('kontens.kategori_id', 4)
-            ->get();
+            ->get(['kontens.*', 'gambars.path', 'gambars.jenis']);
         return new BeritaResource(true, 'List data konten', $data);
     }
 
@@ -26,6 +26,6 @@ class BeritaController extends Controller
             return new BeritaResource(true, 'Detail Data Category!', $konten);
         }
 
-        return new BeritaResource(false, 'Detail Data Category Tidak Ditemukan!', null);
+        return new BeritaResource(false, 'Detail Data Category Tidak Ditemukan!', $konten);
     }
 }
