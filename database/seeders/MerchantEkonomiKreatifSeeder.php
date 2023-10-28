@@ -19,7 +19,8 @@ class MerchantEkonomiKreatifSeeder extends Seeder
             'nama' => 'Toko Kaldu',
             'deskripsi' => 'Menjual Semua Kebutuhan Anda',
             'gambar_id' => 1,
-            'phone' => '081803975109'
+            'phone' => '081803975109',
+            'jenis' => 'umkm'
         ]);
     }
 }

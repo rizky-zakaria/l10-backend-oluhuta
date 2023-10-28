@@ -19,7 +19,8 @@ class MerchantBarangSewaSeeder extends Seeder
             'nama' => 'Toko Ali',
             'deskripsi' => 'Menjual Semua Kebutuhan Anda',
             'gambar_id' => 1,
-            'phone' => '6281803975109'
+            'phone' => '6281803975109',
+            'jenis' => 'umkm'
         ]);
     }
 }

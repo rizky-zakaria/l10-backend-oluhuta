@@ -19,7 +19,8 @@ class MerchantKulinerSeeder extends Seeder
             'nama' => 'Rumah Makan Mama Ani',
             'deskripsi' => 'Menjual Semua Kebutuhan Anda',
             'gambar_id' => 1,
-            'phone' => '081803975109'
+            'phone' => '081803975109',
+            'jenis' => 'kuliner'
         ]);
     }
 }

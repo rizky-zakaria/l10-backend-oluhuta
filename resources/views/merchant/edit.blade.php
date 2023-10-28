@@ -28,6 +28,13 @@
                             value="{{ $data->phone }}">
                     </div>
                     <div class="col-12">
+                        <label for="jenis">Jenis</label>
+                        <select name="jenis" id="jenis" class="form-control" required>
+                            <option value="umkm">Ekonomi Kreatif</option>
+                            <option value="kuliner">Kuliner</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
                         <label for="gambar">Gambar</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="gambar"

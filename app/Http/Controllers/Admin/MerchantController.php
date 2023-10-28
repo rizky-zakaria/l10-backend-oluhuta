@@ -71,7 +71,8 @@ class MerchantController extends Controller
                 'nama' => $request->nama,
                 'deskripsi' => $request->deskripsi,
                 'gambar_id' => $gambar->id,
-                'phone' => $request->phone
+                'phone' => $request->phone,
+                'jenis' => $request->jenis
             ]);
             if ($data) {
                 // Al('Gagal menambahkan data', 'error');
@@ -147,6 +148,7 @@ class MerchantController extends Controller
                 $data->deskripsi = $request->deskripsi;
                 $data->gambar_id = $gambar->id;
                 $data->phone = $request->phone;
+                $data->jenis = $request->jenis;
                 $data->update();
 
                 if ($data) {
@@ -162,6 +164,7 @@ class MerchantController extends Controller
             $data->nama = $request->nama;
             $data->deskripsi = $request->deskripsi;
             $data->phone = $request->phone;
+            $data->jenis = $request->jenis;
             $data->update();
 
             if ($data) {

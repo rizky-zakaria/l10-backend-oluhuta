@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->text('deskripsi');
             $table->string('phone');
+            $table->string('jenis');
             $table->bigInteger('gambar_id');
             $table->timestamps();
         });
