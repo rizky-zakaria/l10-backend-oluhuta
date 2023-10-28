@@ -118,7 +118,7 @@ class MerchantController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'file'    => 'image|mimes:jpeg,jpg,png|max:2000',
-            'nama'     => 'required|unique:merchants',
+            'nama'     => 'required',
             'deskripsi' => 'required'
         ]);
         if ($validator->fails()) {
