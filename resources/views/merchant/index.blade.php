@@ -24,6 +24,9 @@
                             Merchant
                         </th>
                         <th>
+                            Telepon
+                        </th>
+                        <th>
                             Deskripsi
                         </th>
                         <th>
@@ -42,6 +45,9 @@
                             </td>
                             <td>
                                 {{ $item->nama }}
+                            </td>
+                            <td>
+                                {{ $item->phone }}
                             </td>
                             <td>
                                 {{ $item->deskripsi }}

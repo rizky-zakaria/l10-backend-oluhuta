@@ -161,6 +161,7 @@ class MerchantController extends Controller
             $data = Merchant::find($id);
             $data->nama = $request->nama;
             $data->deskripsi = $request->deskripsi;
+            $data->phone = $request->phone;
             $data->update();
 
             if ($data) {
