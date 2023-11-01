@@ -28,7 +28,7 @@ class KontenController extends Controller
     public function print()
     {
         $data = Konten::where('kategori_id', '!=', 4)->orderBy('tgl_post', 'desc')->get();
-        return view('konten.index', compact('data'));
+        return view('konten.print', compact('data'));
     }
 
     /**
