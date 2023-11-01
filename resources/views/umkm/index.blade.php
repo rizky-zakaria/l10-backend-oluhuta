@@ -10,8 +10,13 @@
     <div class="card">
         <div class="card-header">
             Daftar UMKM Lokal
-            <a href="{{ route('umkm-lokal.create') }}" class="btn btn-sm btn-primary float-right"><i
-                    class="fas fa-plus-circle"></i> Tambah</a>
+            @if (Auth::user()->role === 'admin')
+                <a href="{{ route('umkm-lokal.create') }}" class="btn btn-sm btn-primary float-right"><i
+                        class="fas fa-plus-circle"></i> Tambah</a>
+            @else
+                <a href="{{ url('pimpinan/laporan/data-umkm/print') }}" class="btn btn-sm btn-warning float-right"><i
+                        class="fas fa-print"></i> Cetak</a>
+            @endif
         </div>
         <div class="card-body">
             <table class="table table-bordered table-hover" id="myTable">
@@ -26,12 +31,14 @@
                         <th>
                             Produk
                         </th>
-                        <th>
-                            Harga
-                        </th>
-                        <th>
-                            Stok
-                        </th>
+                        @if (Auth::user()->role === 'admin')
+                            <th>
+                                Harga
+                            </th>
+                            <th>
+                                Stok
+                            </th>
+                        @endif
                         <th>
                             Gambar
                         </th>
@@ -52,12 +59,14 @@
                             <td>
                                 {{ $item->product }}
                             </td>
-                            <td>
-                                {{ $item->harga }}
-                            </td>
-                            <td>
-                                {{ $item->stok }}
-                            </td>
+                            @if (Auth::user()->role === 'admin')
+                                <td>
+                                    {{ $item->harga }}
+                                </td>
+                                <td>
+                                    {{ $item->stok }}
+                                </td>
+                            @endif
                             <td>
                                 <img src="{{ asset($item->gambar->path) }}" width="100px" alt="">
                             </td>

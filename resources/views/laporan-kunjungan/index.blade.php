@@ -3,13 +3,13 @@
 @section('title', 'Laporan Transaksi')
 
 @section('content_header')
-    <h1>Laporan Transaksi</h1>
+    <h1>Laporan Kunjungan</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            Laporan Transaksi
+            Laporan Kunjungan
         </div>
         <div class="card-body">
             <form action="{{ url('admin/laporan/kunjungan/cetak') }}" method="post">

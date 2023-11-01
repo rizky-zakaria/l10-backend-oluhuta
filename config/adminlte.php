@@ -299,7 +299,7 @@ return [
             'text'        => 'Home',
             'url'         => 'home',
             'icon'        => 'fas fa-home',
-            'can'         => ['isAdmin']
+            'can'         => ['isAdmin', 'isPimpinan']
         ],
         [
             'text'    => 'Data Master',
@@ -352,6 +352,29 @@ return [
             'url'         => 'admin/qrcode',
             'icon'        => 'fas fa-qrcode',
             'can'         => ['isAdmin']
+        ],
+        [
+            'text'        => 'Laporan',
+            'icon'        => 'fas fa-file',
+            'can'         => ['isPimpinan'],
+            'submenu' => [
+                [
+                    'text' => 'Data Wisata',
+                    'url'  => 'pimpinan/laporan/data-wisata',
+                ],
+                [
+                    'text' => 'Data Kunjungan',
+                    'url'  => 'pimpinan/laporan/data-kunjungan',
+                ],
+                [
+                    'text' => 'Data UMKM',
+                    'url'  => 'pimpinan/laporan/data-umkm',
+                ],
+                [
+                    'text' => 'Data Penyewaan',
+                    'url'  => 'pimpinan/laporan/data-sewa',
+                ],
+            ],
         ],
         // [
         //     'text'        => 'Reset Password',

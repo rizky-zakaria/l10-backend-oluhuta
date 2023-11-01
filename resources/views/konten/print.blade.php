@@ -17,7 +17,7 @@
     <div class="card">
         <div class="card-header text-center">
             <h5>
-                Laporan Data Kunjungan Oluhuta Journey <br>
+                Laporan Data Wisata Oluhuta Journey <br>
                 Desa Edu-Geowisata Oluhuta
             </h5>
         </div>
@@ -25,17 +25,35 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Pengunjung</th>
-                        <th scope="col">Tanggal</th>
+                        <th>
+                            No
+                        </th>
+                        <th>
+                            Judul
+                        </th>
+                        <th>
+                            Kategori
+                        </th>
+                        <th>
+                            Gambar
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($data as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->user->name }}</td>
-                            <td>{{ $item->created_at }}</td>
+                            <td>
+                                {{ $loop->iteration }}
+                            </td>
+                            <td>
+                                {{ $item->judul }}
+                            </td>
+                            <td>
+                                {{ $item->kategori->kategori }}
+                            </td>
+                            <td>
+                                <img src="{{ asset($item->gambar->path) }}" width="100px" alt="">
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

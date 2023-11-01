@@ -8,6 +8,9 @@ use App\Http\Controllers\Admin\MerchantController;
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\UmkmController;
 use App\Http\Controllers\KunjunganController;
+use App\Http\Controllers\Pimpinan\LaporanDataSewaController;
+use App\Http\Controllers\Pimpinan\LaporanDataUmkmController;
+use App\Http\Controllers\Pimpinan\LaporanDataWisataController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +43,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('laporan/kunjungan', [LaporanKunjunganController::class, 'index']);
         Route::post('laporan/kunjungan/cetak', [LaporanKunjunganController::class, 'cetak']);
         Route::get('qrcode', [KunjunganController::class, 'qrcode']);
+    });
+    Route::prefix('pimpinan')->group(function () {
+        Route::get('laporan/data-wisata', [LaporanDataWisataController::class, 'index']);
+        Route::get('laporan/data-wisata/print', [LaporanDataWisataController::class, 'print']);
+        Route::get('laporan/data-kunjungan', [LaporanKunjunganController::class, 'index']);
+        Route::get('laporan/data-kunjungan/print', [LaporanKunjunganController::class, 'print']);
+        Route::get('laporan/data-umkm', [LaporanDataUmkmController::class, 'index']);
+        Route::get('laporan/data-umkm/print', [LaporanDataUmkmController::class, 'print']);
+        Route::get('laporan/data-sewa', [LaporanDataSewaController::class, 'index']);
+        Route::get('laporan/data-sewa/print', [LaporanDataSewaController::class, 'print']);
     });
 });
 

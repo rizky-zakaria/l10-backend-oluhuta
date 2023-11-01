@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>Laporan Kunjungan</title>
+    <title>Laporan UMKM</title>
 </head>
 
 <body>
     <div class="card">
         <div class="card-header text-center">
             <h5>
-                Laporan Data Kunjungan Oluhuta Journey <br>
+                Laporan Data UMKM Oluhuta Journey <br>
                 Desa Edu-Geowisata Oluhuta
             </h5>
         </div>
@@ -25,17 +25,45 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Pengunjung</th>
-                        <th scope="col">Tanggal</th>
+                        <th>
+                            No
+                        </th>
+                        <th>
+                            Produk
+                        </th>
+                        <th>
+                            Jenis
+                        </th>
+                        <th>
+                            Merchant
+                        </th>
+                        <th>
+                            Gambar
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($data as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->user->name }}</td>
-                            <td>{{ $item->created_at }}</td>
+                            <td>
+                                {{ $loop->iteration }}
+                            </td>
+                            <td>
+                                {{ $item->product }}
+                            </td>
+                            <td>
+                                @if ($item->kategori === 'sewa')
+                                    Barang Sewa
+                                @else
+                                    Souvenir
+                                @endif
+                            </td>
+                            <td>
+                                {{ $item->merchant->nama }}
+                            </td>
+                            <td>
+                                <img src="{{ asset($item->gambar->path) }}" width="100px" alt="">
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

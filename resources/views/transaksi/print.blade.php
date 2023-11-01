@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>Laporan Kunjungan</title>
+    <title>Laporan UMKM</title>
 </head>
 
 <body>
     <div class="card">
         <div class="card-header text-center">
             <h5>
-                Laporan Data Kunjungan Oluhuta Journey <br>
+                Laporan Data UMKM Oluhuta Journey <br>
                 Desa Edu-Geowisata Oluhuta
             </h5>
         </div>
@@ -25,18 +25,38 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Pengunjung</th>
-                        <th scope="col">Tanggal</th>
+                        <th>
+                            No
+                        </th>
+                        <th>
+                            Produk
+                        </th>
+                        <th>
+                            Penyewa
+                        </th>
+                        <th>
+                            Tanggal Sewa
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($data as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->user->name }}</td>
-                            <td>{{ $item->created_at }}</td>
-                        </tr>
+                        @if ($item->product->kategori === 'sewa')
+                            <tr>
+                                <td>
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td>
+                                    {{ $item->product->product }}
+                                </td>
+                                <td>
+                                    {{ $item->user->name }}
+                                </td>
+                                <td>
+                                    {{ $item->created_at }}
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>

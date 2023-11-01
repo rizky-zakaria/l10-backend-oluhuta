@@ -10,8 +10,13 @@
     <div class="card">
         <div class="card-header">
             Daftar Merchant
-            <a href="{{ route('konten.create') }}" class="btn btn-sm btn-primary float-right"><i
-                    class="fas fa-plus-circle"></i>Tambah</a>
+            @if (Auth::user()->role === 'admin')
+                <a href="{{ route('konten.create') }}" class="btn btn-sm btn-primary float-right"><i
+                        class="fas fa-plus-circle"></i>Tambah</a>
+            @else
+                <a href="{{ url('pimpinan/laporan/data-wisata/print') }}" class="btn btn-sm btn-warning float-right"><i
+                        class="fas fa-print"></i> Cetak</a>
+            @endif
         </div>
         <div class="card-body">
             <table class="table table-bordered table-hover" id="myTable">
