@@ -13,7 +13,7 @@ class MerchatController extends Controller
     public function index()
     {
         $data = Merchant::join('gambars', 'gambars.id', '=', 'merchants.gambar_id')
-            ->where('jenis', 'umkm')
+            ->where('merchants.jenis', 'umkm')
             ->get(['merchants.*', 'gambars.path']);
         return new MerchantResource(true, 'List data konten', $data);
     }
