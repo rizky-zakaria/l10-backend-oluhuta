@@ -41,22 +41,20 @@
                 </thead>
                 <tbody>
                     @foreach ($data as $item)
-                        @if ($item->product->kategori === 'sewa')
-                            <tr>
-                                <td>
-                                    {{ $loop->iteration }}
-                                </td>
-                                <td>
-                                    {{ $item->product->product }}
-                                </td>
-                                <td>
-                                    {{ $item->user->name }}
-                                </td>
-                                <td>
-                                    {{ $item->created_at }}
-                                </td>
-                            </tr>
-                        @endif
+                        <tr>
+                            <td>
+                                {{ $loop->iteration }}
+                            </td>
+                            <td>
+                                {{ $item->product->product }}
+                            </td>
+                            <td>
+                                {{ $item->user->name }}
+                            </td>
+                            <td>
+                                {{ $item->created_at }}
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
