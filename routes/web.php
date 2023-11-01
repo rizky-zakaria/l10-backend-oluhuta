@@ -43,6 +43,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('laporan/kunjungan', [LaporanKunjunganController::class, 'index']);
         Route::post('laporan/kunjungan/cetak', [LaporanKunjunganController::class, 'cetak']);
         Route::get('qrcode', [KunjunganController::class, 'qrcode']);
+
+        Route::get('laporan/data-wisata/print', [KontenController::class, 'print']);
+        Route::get('laporan/data-umkm/print', [UmkmController::class, 'print']);
     });
     Route::prefix('pimpinan')->group(function () {
         Route::get('laporan/data-wisata', [LaporanDataWisataController::class, 'index']);

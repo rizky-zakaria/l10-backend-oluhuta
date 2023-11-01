@@ -13,6 +13,8 @@
             @if (Auth::user()->role === 'admin')
                 <a href="{{ route('umkm-lokal.create') }}" class="btn btn-sm btn-primary float-right"><i
                         class="fas fa-plus-circle"></i> Tambah</a>
+                <a href="{{ url('admin/laporan/data-umkm/print') }}" class="btn btn-sm btn-warning float-right"><i
+                        class="fas fa-print"></i> Cetak</a>
             @else
                 <a href="{{ url('pimpinan/laporan/data-umkm/print') }}" class="btn btn-sm btn-warning float-right"><i
                         class="fas fa-print"></i> Cetak</a>

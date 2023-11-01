@@ -25,6 +25,12 @@ class KontenController extends Controller
         return view('konten.index', compact('data'));
     }
 
+    public function print()
+    {
+        $data = Konten::where('kategori_id', '!=', 4)->orderBy('tgl_post', 'desc')->get();
+        return view('konten.index', compact('data'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -25,6 +25,12 @@ class UmkmController extends Controller
         return view('umkm.index', compact('data'));
     }
 
+    public function print()
+    {
+        $data = Product::get();
+        return view('umkm.print', compact('data'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
