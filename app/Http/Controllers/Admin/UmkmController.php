@@ -27,7 +27,10 @@ class UmkmController extends Controller
 
     public function print()
     {
-        $data = Product::get();
+        $data =
+            Product::where('kategori', 'umkm')
+            ->orWhere('kategori', 'sewa')
+            ->get();
         return view('umkm.print', compact('data'));
     }
 
