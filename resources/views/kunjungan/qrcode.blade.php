@@ -16,7 +16,7 @@
 <body>
 
     <div class="container d-flex justify-content-center text-success mt-5">
-        {!! QrCode::size(100)->generate('http://localhost:8000/kunjungan/') !!}
+        {!! QrCode::size(100)->generate('https://admin.oluhutajourney.com/kunjungan/') !!}
 
     </div>
 
