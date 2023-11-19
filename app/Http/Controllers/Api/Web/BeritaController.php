@@ -14,7 +14,7 @@ class BeritaController extends Controller
         $data = Berita::join('gambars', 'gambars.id', '=', 'beritas.gambar_id')
             ->when(request()->q, function ($data) {
                 $data = $data->where('beritas.judul', 'like', '%' . request()->q . '%');
-            })->latest()->paginate(6);
+            })->latest()->paginate(3);
 
         return new BeritaResource(true, 'List Data Categories', $data);
     }
