@@ -16,6 +16,6 @@ class BeritaController extends Controller
                 $data = $data->where('beritas.judul', 'like', '%' . request()->q . '%');
             })->latest()->paginate(3);
 
-        return new BeritaResource(true, 'List Data Categories', $data);
+        return new BeritaResource(true, 'List Data Berita', $data);
     }
 }
