@@ -10,11 +10,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Laporan Transaksi {{ date('Y/m/d') }}</title>
 </head>
 
 <body>
     <div class="card">
+        <div class="card-header text-center">
+            <h5>
+                Laporan Data Transaksi Oluhuta Journey <br>
+                Desa Edu-Geowisata Oluhuta
+            </h5>
+        </div>
         <div class="card-body">
             <table class="table">
                 <thead>

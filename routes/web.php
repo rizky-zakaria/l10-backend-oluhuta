@@ -54,8 +54,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('laporan/data-kunjungan/print', [LaporanKunjunganController::class, 'print']);
         Route::get('laporan/data-umkm', [LaporanDataUmkmController::class, 'index']);
         Route::get('laporan/data-umkm/print', [LaporanDataUmkmController::class, 'print']);
-        Route::get('laporan/data-sewa', [LaporanDataSewaController::class, 'index']);
-        Route::get('laporan/data-sewa/print', [LaporanDataSewaController::class, 'print']);
+        Route::get('laporan/data-transaksi', [LaporanDataSewaController::class, 'index']);
+        Route::get('laporan/data-transaksi/print', [LaporanDataSewaController::class, 'print']);
     });
 });
 

@@ -371,8 +371,8 @@ return [
                     'url'  => 'pimpinan/laporan/data-umkm',
                 ],
                 [
-                    'text' => 'Data Penyewaan',
-                    'url'  => 'pimpinan/laporan/data-sewa',
+                    'text' => 'Data Transaksi',
+                    'url'  => 'pimpinan/laporan/data-transaksi',
                 ],
             ],
         ],

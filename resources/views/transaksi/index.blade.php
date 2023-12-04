@@ -11,7 +11,7 @@
         <div class="card-header">
             Daftar Transaksi
             @if (Auth::user()->role === 'pimpinan')
-                <a href="{{ url('pimpinan/laporan/data-sewa/print') }}" class="btn btn-warning btn-sm float-right"><i
+                <a href="{{ url('pimpinan/laporan/data-transaksi/print') }}" class="btn btn-warning btn-sm float-right"><i
                         class="fas fa-print"></i> Cetak</a>
             @endif
         </div>
