@@ -102,12 +102,12 @@ class TransaksiController extends Controller
 
         $payment = Transaksi::where('order_id', $response->order_id)->firstOrFail();
 
-        if ($payment->status == 'settlement' || $payment->status == 'success') {
+        if ($payment->status == 'settlement' || $payment->status == 'capture') {
             return response()->json('Payment has been already processed');
         }
 
-        if ($response->transaction_status == 'success') {
-            $payment->status = 'success';
+        if ($response->transaction_status == 'capture') {
+            $payment->status = 'capture';
         } elseif ($response->transaction_status == 'settlement') {
             $payment->status = 'settlement';
         } elseif ($response->transaction_status == 'pending') {

@@ -57,39 +57,41 @@
                                 <img src="{{ asset($item->gambar->path) }}" width="100px" alt="">
                             </td>
                             <td>
-                                <a href="{{ route('konten.edit', $item->id) }}" class="btn btn-sm btn-success"><i
-                                        class="fas fa-edit"></i></a>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                    data-target="#exampleModal">
-                                    <i class="fas fa-trash"></i>
-                                </button>
+                                @if (Auth::user()->role === 'admin')
+                                    <a href="{{ route('konten.edit', $item->id) }}" class="btn btn-sm btn-success"><i
+                                            class="fas fa-edit"></i></a>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
 
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Yakin Ingin Menghapus Data Ini?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Batal</button>
-                                                <form action="{{ route('konten.destroy', $item->id) }}" method="post">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger">Hapus</button>
-                                                </form>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Yakin Ingin Menghapus Data Ini?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Batal</button>
+                                                    <form action="{{ route('konten.destroy', $item->id) }}" method="post">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

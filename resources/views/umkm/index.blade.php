@@ -73,15 +73,17 @@
                                 <img src="{{ asset($item->gambar->path) }}" width="100px" alt="">
                             </td>
                             <td>
-                                <a href="{{ route('umkm-lokal.edit', $item->id) }}" class="btn btn-sm btn-success"><i
-                                        class="fas fa-edit"></i></a>
-                                <form action="{{ route('umkm-lokal.destroy', $item->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
+                                @if (Auth::user()->role === 'admin')
+                                    <a href="{{ route('umkm-lokal.edit', $item->id) }}" class="btn btn-sm btn-success"><i
+                                            class="fas fa-edit"></i></a>
+                                    <form action="{{ route('umkm-lokal.destroy', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
 
-                                    <button type="submit"class="btn btn-sm btn-danger"><i
-                                            class="fas fa-trash"></i></button>
-                                </form>
+                                        <button type="submit"class="btn btn-sm btn-danger"><i
+                                                class="fas fa-trash"></i></button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

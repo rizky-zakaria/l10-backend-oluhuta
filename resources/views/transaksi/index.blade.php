@@ -26,6 +26,9 @@
                             Nama
                         </th>
                         <th>
+                            Harga
+                        </th>
+                        <th>
                             Produk
                         </th>
                         <th>
@@ -44,6 +47,9 @@
                             </td>
                             <td>
                                 {{ $item->user->name }}
+                            </td>
+                            <td>
+                                {{ $item->harga }}
                             </td>
                             <td>
                                 {{ $item->product->product }}
