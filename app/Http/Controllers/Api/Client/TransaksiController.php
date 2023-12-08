@@ -19,6 +19,7 @@ class TransaksiController extends Controller
         $data = Transaksi::join('products', 'products.id', '=', 'transaksis.product_id')
             ->join('gambars', 'gambars.id', '=', 'products.gambar_id')
             ->where('status', $status)
+            ->where('user_id', Auth::user()->id)
             ->orderBy('created_at', 'desc')
             ->get(['transaksis.*', 'products.product', 'gambars.path']);
         return new TransaksiResource(true, 'List data konten', $data);
