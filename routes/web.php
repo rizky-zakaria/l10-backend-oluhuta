@@ -11,6 +11,7 @@ use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\Pimpinan\LaporanDataSewaController;
 use App\Http\Controllers\Pimpinan\LaporanDataUmkmController;
 use App\Http\Controllers\Pimpinan\LaporanDataWisataController;
+use App\Http\Controllers\Web\TransaksiController as WebTransaksiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,3 +61,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('kunjungan/{id}', [KunjunganController::class, 'show']);
+Route::get('invoice/{nomor_order}', [WebTransaksiController::class, 'index']);
