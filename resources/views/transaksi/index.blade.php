@@ -54,17 +54,20 @@
                             <td>
                                 {{ $item->product->product }}
                             </td>
-
                             <td>
                                 {{ $item->status }}
                             </td>
                             <td>
-                                @if ($item->satstus === 'pending')
-                                    <a href="" class="btn btn-sm btn-success">Tandai Selesai</a>
+                                @if ($item->product->kategori === 'sewa')
+                                    @if ($item->status !== 'capture')
+                                        <a href="{{ url('admin/transaksi/' . $item->id . '/selesai') }}"
+                                            class="btn btn-sm btn-success">Tandai Selesai</a>
+                                    @else
+                                        <a href="" class="btn btn-sm btn-secondary">Selesai</a>
+                                    @endif
                                 @else
                                     <a href="" class="btn btn-sm btn-secondary">Selesai</a>
                                 @endif
-
                             </td>
                         </tr>
                     @endforeach

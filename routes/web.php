@@ -39,12 +39,12 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('kuliner', KulinerController::class);
         Route::resource('umkm-lokal', UmkmController::class);
         Route::get('transaksi', [TransaksiController::class, 'index']);
+        Route::get('transaksi/{id}/selesai', [TransaksiController::class, 'selesai']);
         Route::get('laporan/transaksi', [LaporanTransaksiController::class, 'index']);
         Route::post('laporan/transaksi/cetak', [LaporanTransaksiController::class, 'cetak']);
         Route::get('laporan/kunjungan', [LaporanKunjunganController::class, 'index']);
         Route::post('laporan/kunjungan/cetak', [LaporanKunjunganController::class, 'cetak']);
         Route::get('qrcode', [KunjunganController::class, 'qrcode']);
-
         Route::get('laporan/data-wisata/print', [KontenController::class, 'print']);
         Route::get('laporan/data-umkm/print', [UmkmController::class, 'print']);
     });
