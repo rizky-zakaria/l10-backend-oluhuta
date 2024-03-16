@@ -58,6 +58,7 @@
                                 {{ $item->status }}
                             </td>
                             <td>
+                                {{ $item->product->kategori }}
                                 @if ($item->product->kategori === 'sewa')
                                     @if ($item->status !== 'capture')
                                         <a href="{{ url('admin/transaksi/' . $item->id . '/selesai') }}"
