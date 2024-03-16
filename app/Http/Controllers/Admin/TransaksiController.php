@@ -22,6 +22,7 @@ class TransaksiController extends Controller
         $product = Product::find($data->product_id);
         $product->stok = $product->stok + $data->qty;
         $product->update();
+        $data->update();
         return redirect(url('admin/transaksi'));
     }
 
