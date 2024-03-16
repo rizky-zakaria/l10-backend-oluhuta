@@ -18,6 +18,7 @@ class TransaksiController extends Controller
     public function selesai($id)
     {
         $data = Transaksi::find($id);
+        $data->status = 'done';
         $product = Product::find($data->product_id);
         $product->stok = $product->stok + $data->qty;
         $product->update();

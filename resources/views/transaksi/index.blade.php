@@ -60,7 +60,7 @@
                             <td>
                                 {{-- {{ $item->product->kategori }} --}}
                                 @if ($item->product->kategori === 'sewa')
-                                    @if ($item->status !== 'capture')
+                                    @if ($item->status === 'pending')
                                         <a href="{{ url('admin/transaksi/' . $item->id . '/batal') }}"
                                             class="btn btn-sm btn-danger">Batal</a>
                                     @elseif($item->status === 'capture')
