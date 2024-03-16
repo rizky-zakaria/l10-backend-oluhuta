@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('umkm-lokal', UmkmController::class);
         Route::get('transaksi', [TransaksiController::class, 'index']);
         Route::get('transaksi/{id}/selesai', [TransaksiController::class, 'selesai']);
+        Route::get('transaksi/{id}/batal', [TransaksiController::class, 'batal']);
         Route::get('laporan/transaksi', [LaporanTransaksiController::class, 'index']);
         Route::post('laporan/transaksi/cetak', [LaporanTransaksiController::class, 'cetak']);
         Route::get('laporan/kunjungan', [LaporanKunjunganController::class, 'index']);

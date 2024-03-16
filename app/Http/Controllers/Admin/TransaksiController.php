@@ -23,4 +23,15 @@ class TransaksiController extends Controller
         $product->update();
         return redirect(url('admin/transaksi'));
     }
+
+    public function batal($id)
+    {
+        $data = Transaksi::find($id);
+        $data->status = 'cancel';
+        $product = Product::find($data->product_id);
+        $product->stok = $product->stok + $data->qty;
+        $product->update();
+        $data->update();
+        return redirect(url('admin/transaksi'));
+    }
 }

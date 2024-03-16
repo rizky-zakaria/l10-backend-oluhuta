@@ -61,6 +61,9 @@
                                 {{ $item->product->kategori }}
                                 @if ($item->product->kategori === 'sewa')
                                     @if ($item->status !== 'capture')
+                                        <a href="{{ url('admin/transaksi/' . $item->id . '/batal') }}"
+                                            class="btn btn-sm btn-success">Batal</a>
+                                    @elseif($item->status === 'capture')
                                         <a href="{{ url('admin/transaksi/' . $item->id . '/selesai') }}"
                                             class="btn btn-sm btn-success">Tandai Selesai</a>
                                     @else
