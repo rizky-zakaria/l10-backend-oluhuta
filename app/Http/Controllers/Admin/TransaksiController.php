@@ -16,12 +16,12 @@ class TransaksiController extends Controller
             $data = Transaksi::join('products', 'products.id', '=', 'transaksis.product_id')
                 ->where('products.kategori', 'sewa')
                 ->orderBy('transaksis.created_at', 'desc')
-                ->get();
+                ->get(['transaksis.*', 'products.product', 'products.kategori']);
         } else {
             $data = Transaksi::join('products', 'products.id', '=', 'transaksis.product_id')
                 ->where('products.kategori', '!=', 'sewa')
                 ->orderBy('transaksis.created_at', 'desc')
-                ->get();
+                ->get(['transaksis.*', 'products.product', 'products.kategori']);
         }
         return view('transaksi.index', compact('data', 'kategori'));
     }
@@ -29,12 +29,13 @@ class TransaksiController extends Controller
     public function selesai($id)
     {
         $data = Transaksi::find($id);
+        // dd($data);
         $data->status = 'done';
         $product = Product::find($data->product_id);
         $product->stok = $product->stok + $data->qty;
         $product->update();
         $data->update();
-        return redirect(url('admin/transaksi'));
+        return redirect()->back();
     }
 
     public function batal($id)
