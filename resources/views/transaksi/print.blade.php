@@ -17,7 +17,7 @@
     <div class="card">
         <div class="card-header text-center">
             <h5>
-                Laporan Data UMKM Oluhuta Journey <br>
+                Laporan Data Transaksi Oluhuta Journey <br>
                 Desa Edu-Geowisata Oluhuta
             </h5>
         </div>
@@ -30,6 +30,9 @@
                         </th>
                         <th>
                             Produk
+                        </th>
+                        <th>
+                            Harga
                         </th>
                         <th>
                             Penyewa
@@ -47,6 +50,10 @@
                             </td>
                             <td>
                                 {{ $item->product->product }}
+                            </td>
+
+                            <td>
+                                Rp. {{ number_format($item->product->harga, 0, ',', '.') }}
                             </td>
                             <td>
                                 {{ $item->user->name }}

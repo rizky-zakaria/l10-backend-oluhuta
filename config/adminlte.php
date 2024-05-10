@@ -328,19 +328,29 @@ return [
         ],
         [
             'text'        => 'Transaksi',
-            'url'         => 'admin/transaksi',
+            // 'url'         => 'admin/transaksi',
             'icon'        => 'fas fa-shopping-cart',
-            'can'         => ['isAdmin']
+            'can'         => ['isAdmin'],
+            'submenu'   => [
+                [
+                    'text' => 'Pembelian',
+                    'url'  => 'admin/transaksi/pembelian',
+                ],
+                [
+                    'text' => 'Sewa',
+                    'url'  => 'admin/transaksi/penyewaan',
+                ]
+            ]
         ],
         [
             'text'        => 'Laporan',
             'icon'        => 'fas fa-file',
             'can'         => ['isAdmin'],
             'submenu' => [
-                [
-                    'text' => 'Transaksi',
-                    'url'  => 'admin/laporan/transaksi',
-                ],
+                // [
+                //     'text' => 'Transaksi',
+                //     'url'  => 'admin/laporan/transaksi',
+                // ],
                 [
                     'text' => 'Kunjungan',
                     'url'  => 'admin/laporan/kunjungan',

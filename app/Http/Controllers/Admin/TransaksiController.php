@@ -9,10 +9,21 @@ use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
-    public function index()
+    public function index($kategori)
     {
-        $data = Transaksi::orderBy('created_at', 'desc')->get();
-        return view('transaksi.index', compact('data'));
+        // dd($kategori);
+        if ($kategori == 'penyewaan') {
+            $data = Transaksi::join('products', 'products.id', '=', 'transaksis.product_id')
+                ->where('products.kategori', 'sewa')
+                ->orderBy('transaksis.created_at', 'desc')
+                ->get();
+        } else {
+            $data = Transaksi::join('products', 'products.id', '=', 'transaksis.product_id')
+                ->where('products.kategori', '!=', 'sewa')
+                ->orderBy('transaksis.created_at', 'desc')
+                ->get();
+        }
+        return view('transaksi.index', compact('data', 'kategori'));
     }
 
     public function selesai($id)

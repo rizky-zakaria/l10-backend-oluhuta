@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('merchant', MerchantController::class);
         Route::resource('kuliner', KulinerController::class);
         Route::resource('umkm-lokal', UmkmController::class);
-        Route::get('transaksi', [TransaksiController::class, 'index']);
+        Route::get('transaksi/{kategori}', [TransaksiController::class, 'index']);
         Route::get('transaksi/{id}/selesai', [TransaksiController::class, 'selesai']);
         Route::get('transaksi/{id}/batal', [TransaksiController::class, 'batal']);
         Route::get('laporan/transaksi', [LaporanTransaksiController::class, 'index']);

@@ -41,6 +41,8 @@
                 </thead>
                 <tbody>
                     @foreach ($data as $item)
+                        {{-- @if ($item->product->product === 'sewa')
+                        @endif --}}
                         <tr>
                             <td>
                                 {{ $loop->iteration }}
@@ -52,14 +54,14 @@
                                 {{ $item->harga }}
                             </td>
                             <td>
-                                {{ $item->product->product }}
+                                {{ $item->product }}
                             </td>
                             <td>
                                 {{ $item->status }}
                             </td>
                             <td>
                                 {{-- {{ $item->product->kategori }} --}}
-                                @if ($item->product->kategori === 'sewa')
+                                @if ($item->kategori === 'sewa')
                                     @if ($item->status === 'pending')
                                         <a href="{{ url('admin/transaksi/' . $item->id . '/batal') }}"
                                             class="btn btn-sm btn-danger">Batal</a>
