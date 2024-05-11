@@ -10,7 +10,10 @@ class LaporanDataSewaController extends Controller
 {
     public function index()
     {
-        $data = Transaksi::orderBy('created_at', 'desc')->get();
+        $data = Transaksi::join('products', 'products.id', '=', 'transaksis.product_id')
+            // ->where('products.kategori', '!=', 'sewa')
+            ->orderBy('transaksis.created_at', 'desc')
+            ->get(['transaksis.*', 'products.product', 'products.kategori']);
         return view('transaksi.index', compact('data'));
     }
 
