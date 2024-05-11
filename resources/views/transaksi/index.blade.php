@@ -66,10 +66,10 @@
                                         <a href="{{ url('admin/transaksi/' . $item->id . '/batal') }}"
                                             class="btn btn-sm btn-danger">Batal</a>
                                     @elseif($item->status === 'done')
+                                        <a href="" class="btn btn-sm btn-secondary">Selesai</a>
+                                    @else
                                         <a href="{{ url('admin/transaksi/' . $item->id . '/selesai') }}"
                                             class="btn btn-sm btn-success">Tandai Selesai</a>
-                                    @else
-                                        <a href="" class="btn btn-sm btn-secondary">Selesai</a>
                                     @endif
                                 @else
                                     <a href="" class="btn btn-sm btn-secondary">Selesai</a>
