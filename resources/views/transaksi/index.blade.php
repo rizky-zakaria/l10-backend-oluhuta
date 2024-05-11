@@ -61,20 +61,22 @@
                             </td>
                             <td>
                                 {{-- {{ $item->product->kategori }} --}}
-                                @if ($item->kategori === 'sewa')
-                                    @if ($item->status === 'pending')
-                                        <a href="{{ url('admin/transaksi/' . $item->id . '/batal') }}"
-                                            class="btn btn-sm btn-danger">Batal</a>
-                                    @elseif($item->status === 'done')
-                                        <a href="" class="btn btn-sm btn-secondary">Selesai</a>
-                                    @elseif($item->status === 'cancel')
-                                        <a href="" class="btn btn-sm btn-danger">Dibatalkan</a>
+                                @if (Auth::user()->role === 'admin')
+                                    @if ($item->kategori === 'sewa')
+                                        @if ($item->status === 'pending')
+                                            <a href="{{ url('admin/transaksi/' . $item->id . '/batal') }}"
+                                                class="btn btn-sm btn-danger">Batal</a>
+                                        @elseif($item->status === 'done')
+                                            <a href="" class="btn btn-sm btn-secondary">Selesai</a>
+                                        @elseif($item->status === 'cancel')
+                                            <a href="" class="btn btn-sm btn-danger">Dibatalkan</a>
+                                        @else
+                                            <a href="{{ url('admin/transaksi/' . $item->id . '/selesai') }}"
+                                                class="btn btn-sm btn-success">Tandai Selesai</a>
+                                        @endif
                                     @else
-                                        <a href="{{ url('admin/transaksi/' . $item->id . '/selesai') }}"
-                                            class="btn btn-sm btn-success">Tandai Selesai</a>
+                                        <a href="" class="btn btn-sm btn-secondary">Selesai</a>
                                     @endif
-                                @else
-                                    <a href="" class="btn btn-sm btn-secondary">Selesai</a>
                                 @endif
                             </td>
                         </tr>
